@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --color-brand: #7c3aed;
+  --color-brand-light: #ede9fe;
+  --color-brand-dark: #5b21b6;
+  --color-surface: #0f0f13;
+  --color-surface-2: #18181f;
+  --color-surface-3: #22222d;
+  --color-border: #2e2e3a;
+  --color-text: #f1f0f5;
+  --color-muted: #8b8a9b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface-2); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa, #7c3aed, #4f46e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(124,58,237,0.15);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-muted);
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { color: var(--color-text); border-color: #7c3aed; background: rgba(124,58,237,0.08); }
+
+.input-field {
+  width: 100%;
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.65rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-field:focus { border-color: #7c3aed; }
+.input-field::placeholder { color: var(--color-muted); }
+
+select.input-field option { background: var(--color-surface-3); }
