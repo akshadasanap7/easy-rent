@@ -1,5 +1,5 @@
 {
-  "name": "easyrent-server",
+  "name": "@easyrent/server",
   "version": "1.0.0",
   "description": "EasyRent API Server",
   "main": "index.js",
