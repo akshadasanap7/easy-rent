@@ -4,6 +4,12 @@ const Property = require('../models/Property');
 const { protect, hostOnly } = require('../middleware/auth');
 const { upload, uploadToCloudinary } = require('../config/cloudinary');
 
+// GET host listings — must be before /:id to avoid conflict
+router.get('/host/my-listings', protect, hostOnly, asyncHandler(async (req, res) => {
+  const properties = await Property.find({ host: req.user._id }).sort({ createdAt: -1 });
+  res.json(properties);
+}));
+
 // GET all with filters + pagination
 router.get('/', asyncHandler(async (req, res) => {
   const { city, type, minPrice, maxPrice, bedrooms, search, page = 1, limit = 9 } = req.query;
@@ -31,12 +37,6 @@ router.get('/', asyncHandler(async (req, res) => {
     .limit(Number(limit));
 
   res.json({ properties, total, pages: Math.ceil(total / limit), page: Number(page) });
-}));
-
-// GET host listings
-router.get('/host/my-listings', protect, hostOnly, asyncHandler(async (req, res) => {
-  const properties = await Property.find({ host: req.user._id }).sort({ createdAt: -1 });
-  res.json(properties);
 }));
 
 // GET single

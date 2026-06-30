@@ -76,7 +76,7 @@ export default function PropertyDetail() {
 
   const images = property.images?.length
     ? property.images
-    : [`https://source.unsplash.com/800x500/?${property.type},interior`]
+    : [`https://placehold.co/800x500/18181f/7c3aed?text=${encodeURIComponent(property.type || 'Property')}`]
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16">

@@ -97,11 +97,13 @@ export default function Dashboard() {
             {listings.map((p) => (
               <div key={p._id} className="glass rounded-2xl overflow-hidden">
                 <div className="relative h-40">
-                  <img src={p.images?.[0] || `https://source.unsplash.com/400x300/?apartment`} alt={p.title} className="w-full h-full object-cover" />
+                  <img src={p.images?.[0] || `https://placehold.co/400x300/18181f/7c3aed?text=Property`} alt={p.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <Badge color={p.isAvailable ? 'green' : 'red'} className="absolute top-3 left-3">
-                    {p.isAvailable ? 'Active' : 'Inactive'}
-                  </Badge>
+                  <div className="absolute top-3 left-3">
+                    <Badge color={p.isAvailable ? 'green' : 'red'}>
+                      {p.isAvailable ? 'Active' : 'Inactive'}
+                    </Badge>
+                  </div>
                 </div>
                 <div className="p-4">
                   <h3 className="font-semibold text-sm mb-1 line-clamp-1">{p.title}</h3>
@@ -128,7 +130,7 @@ export default function Dashboard() {
             {bookings.map((b) => (
               <div key={b._id} className="glass rounded-2xl p-5 flex flex-col sm:flex-row gap-4 items-start">
                 <img
-                  src={b.property?.images?.[0] || `https://source.unsplash.com/200x150/?apartment`}
+                  src={b.property?.images?.[0] || `https://placehold.co/200x150/18181f/7c3aed?text=Property`}
                   alt={b.property?.title}
                   className="w-full sm:w-28 h-20 rounded-xl object-cover shrink-0"
                 />

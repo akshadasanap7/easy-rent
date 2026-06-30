@@ -5,9 +5,9 @@ import { toggleSaved } from '../../api/auth'
 import useAuthStore from '../../store/authStore'
 import toast from 'react-hot-toast'
 
-export default function PropertyCard({ property }) {
+export default function PropertyCard({ property, savedIds = [] }) {
   const { user } = useAuthStore()
-  const [saved, setSaved] = useState(false)
+  const [saved, setSaved] = useState(() => savedIds.includes(property._id))
 
   const handleSave = async (e) => {
     e.preventDefault()
@@ -21,7 +21,7 @@ export default function PropertyCard({ property }) {
     }
   }
 
-  const img = property.images?.[0] || `https://source.unsplash.com/600x400/?apartment,${property.type}`
+  const img = property.images?.[0] || `https://placehold.co/600x400/18181f/7c3aed?text=${encodeURIComponent(property.type || 'Property')}`
 
   return (
     <Link to={`/properties/${property._id}`} className="block">

@@ -47,7 +47,7 @@ export default function MyBookings() {
           {bookings.map((b) => (
             <div key={b._id} className="glass rounded-2xl p-5 flex flex-col sm:flex-row gap-4">
               <img
-                src={b.property?.images?.[0] || `https://source.unsplash.com/200x150/?apartment`}
+                src={b.property?.images?.[0] || `https://placehold.co/200x150/18181f/7c3aed?text=Property`}
                 alt={b.property?.title}
                 className="w-full sm:w-32 h-24 rounded-xl object-cover shrink-0"
               />
